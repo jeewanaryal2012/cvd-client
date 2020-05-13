@@ -1,5 +1,55 @@
-<ul>
-  <li>
-    <a class="nav-link" [routerLink]="'/login'">Login</a>
-  </li>
-</ul>
+<div class="nav-wrapper container-fullwidth">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">| LOGO |</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Online (2768)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="'/ad'">My Matches</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="'/ad'" (click)="test()">Messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="'/ad'" (click)="test()">Tes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #fbd827;" [routerLink]="'/ad'" (click)="beMember($event)">Be a
+                Member</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#" (click)="userClicked($event)">Hello,
+                  {{user?.userName | uppercase }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/profile'" (click)="userClicked($event)">
+                  <img [src]="user?.profilePicture === '' ? './assets/images/profile.png' : user?.profilePicture"
+                    class="user-profile-pic" />
+                </a>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" (click)="logout($event)">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+<!-- <app-overlay *ngIf="loggingOut === true"></app-overlay> -->
