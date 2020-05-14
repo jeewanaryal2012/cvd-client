@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     //   this.user = res;
     // }, err => { });
     this.user = {
-      userName: '',
+      userName: 'Jeewan',
       profilePicture: ''
     };
   }
