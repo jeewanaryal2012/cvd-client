@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/3ca7fa6b-8d97-4ab0-9366-490a943ecbef/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/covid-cleaner",
+    "appService.deploySubpath": ""
+}
