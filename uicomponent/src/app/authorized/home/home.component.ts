@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class HomeComponent implements OnInit {
   user: any;
-
+  //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(private authenticationService: AuthenticationService/*, private userProfileService: UserProfileService*/) { }
 
   ngOnInit(): void {

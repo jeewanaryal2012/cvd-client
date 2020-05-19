@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Provide Service</a>
+              <a class="nav-link" [routerLink]="'/home/provide-service'">Provide Service</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="'/'">Need Service</a>
+              <a class="nav-link" [routerLink]="'/home/need-service'">Need Service</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="color: #fbd827;" [routerLink]="'/'" (click)="beMember($event)">Upgrade</a>

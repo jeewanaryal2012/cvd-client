@@ -14,6 +14,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './authorized/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProvideServiceComponent } from './authorized/provide-service/provide-service.component';
+import { NeedServiceComponent } from './authorized/need-service/need-service.component';
+import { HomeLandingComponent } from './authorized/home-landing/home-landing.component';
 
 
 @NgModule({
@@ -23,7 +27,10 @@ import { HomeComponent } from './authorized/home/home.component';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ProvideServiceComponent,
+    NeedServiceComponent,
+    HomeLandingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { HomeComponent } from './authorized/home/home.component';
     BrowserAnimationsModule,
     // MAT
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
