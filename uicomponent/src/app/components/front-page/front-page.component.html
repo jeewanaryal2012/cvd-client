@@ -1,0 +1,66 @@
+<div class="nav-wrapper container-fullwidth">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end">
+                <a class="navbar-brand" href="#">| LOGO |</a>
+                <button class="btn btn-link ml-auto mr-1 price">Price</button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav text-right">
+                        <li class="nav-item active">
+                            <a class="nav-link" [routerLink]="'/home/provide-service'">How It Works</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" [routerLink]="'/home/provide-service'">Provide Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="'/home/provide-service'">Need Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="'/login-register'">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="carousel mt-4">
+        <ngb-carousel *ngIf="images" [interval]="5000" [pauseOnHover]="true">
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[0]" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[1]" alt="Random second slide">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[2]" alt="Random third slide">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+    </div>
+</div>

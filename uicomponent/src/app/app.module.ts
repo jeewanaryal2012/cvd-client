@@ -18,6 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProvideServiceComponent } from './authorized/provide-service/provide-service.component';
 import { NeedServiceComponent } from './authorized/need-service/need-service.component';
 import { HomeLandingComponent } from './authorized/home-landing/home-landing.component';
+import { LoginRegisterLandingComponent } from './components/login-register-landing/login-register-landing.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { HomeLandingComponent } from './authorized/home-landing/home-landing.com
     HomeComponent,
     ProvideServiceComponent,
     NeedServiceComponent,
-    HomeLandingComponent
+    HomeLandingComponent,
+    LoginRegisterLandingComponent,
+    FrontPageComponent
   ],
   imports: [
     BrowserModule,

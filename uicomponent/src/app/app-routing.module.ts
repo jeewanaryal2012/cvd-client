@@ -4,7 +4,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './authorized/home/home.component';
-
+import { LoginRegisterLandingComponent } from './components/login-register-landing/login-register-landing.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 // Children of Home
 import { HomeLandingComponent } from './authorized/home-landing/home-landing.component';
 import { ProvideServiceComponent } from './authorized/provide-service/provide-service.component';
@@ -12,6 +13,8 @@ import { NeedServiceComponent } from './authorized/need-service/need-service.com
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'login-register', component: LoginRegisterLandingComponent },
+  { path: 'front-page', component: FrontPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuardService] },
   {
     path: 'home', component: HomeComponent, children: [
