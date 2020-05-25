@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   registerSuccess = true;
+  verified = false;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -52,9 +53,18 @@ export class RegisterComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit(e) {
+    this.submitted = true;
     e.preventDefault();
     const isVerified = this.verifyResult(this.registerForm.getRawValue());
     console.log(isVerified);
+    if (isVerified === true) {
+      this.verified = true;
+      this.authenticationService.register(this.registerForm.value).subscribe(res => {
+        console.log(res);
+      }, err => { });
+    } else {
+
+    }
     // this.authenticationService.register(this.registerForm.value).subscribe(res => {
     //   console.log(res);
     // }, err => { });
