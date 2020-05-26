@@ -16,10 +16,8 @@ export class HomeComponent implements OnInit {
     // this.userProfileService.getUserProfile(email).subscribe(res => {
     //   this.user = res;
     // }, err => { });
-    this.user = {
-      userName: 'Jeewan',
-      profilePicture: ''
-    };
+    console.log(this.authenticationService.currentUserValue);
+    this.user = this.authenticationService.currentUserValue;
   }
 
 }

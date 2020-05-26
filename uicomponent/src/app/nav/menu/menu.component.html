@@ -24,11 +24,11 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="#" (click)="userClicked($event)">Hello,
-                  {{user?.userName | uppercase }}</a>
+                  {{user?.user.firstName | uppercase }}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="'/profile'" (click)="userClicked($event)">
-                  <img [src]="user?.profilePicture === '' ? './assets/images/profile.png' : user?.profilePicture"
+                  <img [src]="user?.user.profilePicture === '' ? imageDomain+'profile.png' : user?.profilePicture"
                     class="user-profile-pic" />
                 </a>
 

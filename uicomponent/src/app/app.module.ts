@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './authorized/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -46,6 +48,7 @@ import { FrontPageComponent } from './components/front-page/front-page.component
     // MAT
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     NgbModule
   ],
   providers: [],

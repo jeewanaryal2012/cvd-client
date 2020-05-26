@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -17,11 +18,16 @@ export class RegisterComponent implements OnInit {
   returnUrl: string;
   registerSuccess = true;
   verified = false;
+  registrationMessage = {
+    result: false,
+    message: ''
+  };
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -39,6 +45,8 @@ export class RegisterComponent implements OnInit {
       verifyNumber1: [{ value: '', disabled: true }],
       verifyNumber2: [{ value: '', disabled: true }],
       verifyResult: ['']
+    }, {
+      validator: this.mustMatch('password', 'repeatPassword')
     });
 
     this.registerForm.patchValue({
@@ -49,18 +57,49 @@ export class RegisterComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.onValueChanges();
   }
   get f() { return this.registerForm.controls; }
+
+  mustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  onValueChanges(): void {
+    this.registerForm.valueChanges.subscribe(val => {
+      console.log(val, this.registerForm.valid);
+    })
+  }
 
   onSubmit(e) {
     this.submitted = true;
     e.preventDefault();
     const isVerified = this.verifyResult(this.registerForm.getRawValue());
     console.log(isVerified);
-    if (isVerified === true) {
+    if (isVerified === true && this.registerForm.valid) {
       this.verified = true;
       this.authenticationService.register(this.registerForm.value).subscribe(res => {
         console.log(res);
+        this.registrationMessage = res[0];
+        this.openSnackBar(`${res[0].message}`, `OK`);
+        if (res[0].result === true) {
+          this.registerForm.reset();
+        }
       }, err => { });
     } else {
 
@@ -74,5 +113,11 @@ export class RegisterComponent implements OnInit {
     const calculatedSum = rawValue.verifyNumber1 + rawValue.verifyNumber2;
     const fieldSum = parseInt(rawValue.verifyResult, 10);
     return calculatedSum === fieldSum;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

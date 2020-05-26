@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EnvImage } from '../../util/env';
 
 @Component({
   selector: 'app-menu',
@@ -8,10 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class MenuComponent implements OnInit {
   @Input() user: any;
+  imageDomain: string = (new EnvImage()).getImageDomain();
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.user);
+    console.log(this.imageDomain);
   }
 
   beMember(e) { }
